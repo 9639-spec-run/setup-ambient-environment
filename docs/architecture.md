@@ -20,23 +20,7 @@
 
 ---
 
-## 1. 定期情報収集
-
-外部ソースの取り込みは2経路に分かれる。
-
-```mermaid
-flowchart LR
-    RSS[("RSS Feeds")] --> IC["/info-collector\n(cron 毎朝6時)"]
-    IC --> NDB(("Notion DB\n(コンテンツ執筆パイプライン向け)"))
-
-    HUMAN["人間が随時\n書き込み"] --> INBOX(("sources/inbox/\nmonthly-review・reference\ntasks・through-ai"))
-    INBOX --> MR["/memory-review\n(週次)"]
-    MR --> CANON[("正本へ反映\n(承認後)")]
-```
-
-①ブログ用のRSS収集（`info-collector`）はNotion DBへ集約し、正本には書き込まない別経路（コンテンツ自動化パイプライン向け）。②正本更新の起点になるのは、人間が随時 `sources/inbox/` 配下（`monthly-review`・`reference`・`tasks`・`through-ai`）へ書き込むメモで、これが後述「記憶正本の最適化」フローに載り、点検→提案→承認を経て正本に反映される。収集そのものは無人実行(cron)を前提とし、①②いずれも正本への直接書き込みは行わない。
-
-## 2. 記憶正本の投影 ／ スキル正本の投影
+## 1. 記憶正本の投影 ／ スキル正本の投影
 
 正本1箇所を各アシスタント固有の形式に変換して届ける。
 
@@ -50,7 +34,7 @@ flowchart LR
 
 `memory/shared`の`facts・context・projects`は`core.md`（薄い核）に集約されたのち、Claude Codeには`@import`、claude.aiには手動貼付、Hermesには`post-commit hook`経由の生成スクリプトで届く。Hermes向けは文字数上限（1,375字）にぶつかった経緯があり、「全文を載せる」から「薄い核に絞る」へ方針転換した。Cowork向けは手動投影のまま未整備。
 
-## 3. 記憶正本の最適化 ／ スキル正本の最適化
+## 2. 記憶正本の最適化 ／ スキル正本の最適化
 
 **記憶の最適化**（詳細）
 ![Memory Optimization](diagrams/memory-optimization.svg)
@@ -61,13 +45,13 @@ flowchart LR
 
 スキルの最適化も同じ切り口（登録簿→提案→承認）で個別に運用しているが、対象がスキル定義である点が記憶側と異なる。
 
-## 4. 大規模データ参照（RAG・MCPサーバー化）
+## 3. 大規模データ参照（RAG・MCPサーバー化）
 
 ![RAG / MCP](diagrams/rag-mcp.svg)
 
 会話履歴（PSE）・`~/projects`配下のノート（project-rag）をそれぞれ独立したPostgreSQL + pgvectorに格納し、MCPサーバーとして`search_memory` / `search_projects`等の**読み取り専用ツールのみ**を公開する。`reindex`・`ingest`・`sync`のような書き込み系操作はMCPに出さず、承認ゲート（人間）と同じ「最小権限」の設計思想を貫いている。
 
-## 5. メタデータ最適化（システム資産のメタデータ更新）
+## 4. メタデータ最適化（システム資産のメタデータ更新）
 
 ![Metadata Optimization](diagrams/metadata-optimization.svg)
 
@@ -76,6 +60,22 @@ flowchart LR
 監視対象を事前にglob宣言する方式はやめ、各docに`path`と`hint`だけを持たせて、実際の判定（差分とhintがズレているか）はLLMに都度任せる設計にした（事前宣言だと大半が重複して二重管理に戻るため）。承認コミット自体が次の検知を誘発する連鎖は未解決の課題として残っている。
 
 内容ドリフト（記憶正本の最適化・週次）とはsourceも登録簿も別だが、`proposals/`以降の承認エンジンは共通。
+
+## 5. 定期情報収集
+
+外部ソースの取り込みは2経路に分かれる。
+
+```mermaid
+flowchart LR
+    RSS[("RSS Feeds")] --> IC["/info-collector\n(cron 毎朝6時)"]
+    IC --> NDB(("Notion DB\n(コンテンツ執筆パイプライン向け)"))
+
+    HUMAN["人間が随時\n書き込み"] --> INBOX(("sources/inbox/\nmonthly-review・reference\ntasks・through-ai"))
+    INBOX --> MR["/memory-review\n(週次)"]
+    MR --> CANON[("正本へ反映\n(承認後)")]
+```
+
+①ブログ用のRSS収集（`info-collector`）はNotion DBへ集約し、正本には書き込まない別経路（コンテンツ自動化パイプライン向け）。②正本更新の起点になるのは、人間が随時 `sources/inbox/` 配下（`monthly-review`・`reference`・`tasks`・`through-ai`）へ書き込むメモで、これが前述「記憶正本の最適化」フローに載り、点検→提案→承認を経て正本に反映される。収集そのものは無人実行(cron)を前提とし、①②いずれも正本への直接書き込みは行わない。
 
 ## 6. スケジュール更新（バックログ・チェックリストの定期更新）
 
