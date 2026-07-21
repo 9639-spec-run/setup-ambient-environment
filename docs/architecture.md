@@ -63,19 +63,15 @@
 
 ## 5. 定期情報収集
 
-外部ソースの取り込みは2経路に分かれる。
-
 ```mermaid
 flowchart LR
-    RSS[("RSS Feeds")] --> IC["/info-collector\n(cron 毎朝6時)"]
-    IC --> NDB(("Notion DB\n(コンテンツ執筆パイプライン向け)"))
-
-    HUMAN["人間が随時\n書き込み"] --> INBOX(("sources/inbox/\nmonthly-review・reference\ntasks・through-ai"))
-    INBOX --> MR["/memory-review\n(週次)"]
-    MR --> CANON[("正本へ反映\n(承認後)")]
+    INTERESTS[("正本\ninterests.md\n(関心データ)")] --> SR["/skill-review\n(週次点検)"]
+    SR -->|"点検→提案→承認"| FEEDS[("feeds.yaml\n(RSSフィードのdomain構成)")]
+    FEEDS --> IC["/info-collector\n(cron 毎週金17時)"]
+    IC --> DIGEST(("info-digest/\n<year>-W<week>.md"))
 ```
 
-①ブログ用のRSS収集（`info-collector`）はNotion DBへ集約し、正本には書き込まない別経路（コンテンツ自動化パイプライン向け）。②正本更新の起点になるのは、人間が随時 `sources/inbox/` 配下（`monthly-review`・`reference`・`tasks`・`through-ai`）へ書き込むメモで、これが前述「記憶正本の最適化」フローに載り、点検→提案→承認を経て正本に反映される。収集そのものは無人実行(cron)を前提とし、①②いずれも正本への直接書き込みは行わない。
+RSS収集（`info-collector`）は`feeds.yaml`のdomain構成に従ってfetch→選抜・要約→publishし、`info-digest/`（Obsidian・git管理）へ週次ダイジェストとして保存する。正本には直接書き込まない別経路だが、`feeds.yaml`自体は正本（`interests.md`の関心の優先度）から独立してはおらず、`skill-review`が正本の変化を週次点検し、前述「記憶正本の最適化／スキル正本の最適化」と同じ点検→提案→承認を経て反映される（＝スキル正本側の最適化対象）。ダイジェストをブログ化する場合はNotionへ人手で投稿する別フローに続くが、それは本節の収集フローの範囲外。収集そのものは無人実行(cron)を前提とし、正本への直接書き込みは行わない。
 
 ## 6. スケジュール更新（バックログ・チェックリストの定期更新）
 
@@ -112,8 +108,9 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    SESSION["Claude Codeとの\n対話セッション\n(区切りごと・cron無し)"] --> CATALOG[("projects-catalog.yaml\n公開ポートフォリオの正本")]
+    MEM2[("memory/shared/projects/*.md\n(プロジェクト状況の正本)")] -.->|"人が参照\n(自動点検は無し)"| SESSION["Claude Codeとの\n対話セッション\n(区切りごと・cron無し)"]
+    SESSION --> CATALOG[("projects-catalog.yaml\n公開ポートフォリオの正本")]
     SESSION --> REPOS["各GitHubリポジトリ\nREADME・push・deploy"]
 ```
 
-GitHubリポジトリの整備・README・公開デモは、`projects-catalog.yaml`を正本として対話セッション起点で棚卸しする運用。上の2機能とは異なり、点検→提案→承認を自動で回すスキルはまだ無く、都度Claude Codeとの対話の中で人間が判断・承認しながら進めている（本リポジトリ自体もこの運用で整備された）。
+GitHubリポジトリの整備・README・公開デモは、`projects-catalog.yaml`を正本として対話セッション起点で棚卸しする運用。`projects-catalog.yaml`自体が「ステータスは`memory/shared/projects/*.md`の正本と一致させること」と定めているが、この一致は自動点検されておらず、対話セッション内で人間が都度参照して揃える運用。上の2機能とは異なり、点検→提案→承認を自動で回すスキルはまだ無く、都度Claude Codeとの対話の中で人間が判断・承認しながら進めている（本リポジトリ自体もこの運用で整備された）。
