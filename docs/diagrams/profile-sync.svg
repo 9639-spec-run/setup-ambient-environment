@@ -1,0 +1,65 @@
+<svg viewBox="0 0 1200 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlP descP">
+  <title id="ttlP">プロフィール・スライド同期フロー（自動・隔週）</title>
+  <desc id="descP">cron/Hermes（隔週）が点線で /profile-sync-check を起動し、監視元の正本 ~/projects/memory と profile-sync資産が同期チェックへ入力される。チェックはproposals（承認待ち・丸）を積み、人が approve（ひし形）で分岐する。承認はprofile-sync資産へ書き戻し、反映は手動で転職サイトへ。</desc>
+  <defs>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+    <marker id="arrowPT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0E7C86"/>
+    </marker>
+  </defs>
+
+  <!-- TR trigger -->
+  <rect x="40" y="45" width="170" height="60" rx="6" fill="#FFFFFF" stroke="#5B6B73" stroke-width="1.5"/>
+  <text x="125" y="72" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">cron / Hermes</text>
+  <text x="125" y="91" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">（隔週）</text>
+
+  <!-- MEM 正本 -->
+  <ellipse cx="125" cy="215" rx="100" ry="55" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="125" y="205" text-anchor="middle" font-size="11" font-weight="600" fill="#0F2742" font-family="monospace">~/projects/memory</text>
+  <text x="125" y="224" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">（監視元の正本）</text>
+
+  <!-- PF profile-sync assets -->
+  <ellipse cx="125" cy="375" rx="110" ry="60" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="125" y="358" text-anchor="middle" font-size="10.5" font-weight="600" fill="#0F2742" font-family="monospace">profile-sync/master.yaml</text>
+  <text x="125" y="376" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="monospace">sites/*.yaml</text>
+  <text x="125" y="393" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="monospace">slide-*.md</text>
+
+  <!-- inputs -> PS -->
+  <path d="M210,80 C300,80 300,185 358,190" fill="none" stroke="#5B6B73" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowP)"/>
+  <text x="290" y="120" text-anchor="middle" font-size="9.5" fill="#0E7C86" font-family="sans-serif">起動</text>
+  <line x1="225" y1="212" x2="358" y2="205" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowP)"/>
+  <path d="M215,350 C300,340 300,235 358,222" fill="none" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowP)"/>
+
+  <!-- PS -->
+  <rect x="360" y="175" width="185" height="66" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="452" y="213" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="monospace">/profile-sync-check</text>
+
+  <!-- PS -> PROP -->
+  <line x1="545" y1="208" x2="598" y2="208" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowP)"/>
+
+  <!-- PROP -->
+  <ellipse cx="695" cy="208" rx="90" ry="52" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="695" y="203" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="monospace">proposals/</text>
+  <text x="695" y="221" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">（承認待ち）</text>
+
+  <!-- PROP -> APV -->
+  <line x1="785" y1="208" x2="848" y2="208" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowP)"/>
+
+  <!-- APV diamond -->
+  <polygon points="945,150 1035,208 945,266 855,208" fill="#FFFFFF" stroke="#0E7C86" stroke-width="2.5"/>
+  <text x="945" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="#0E7C86" font-family="sans-serif">人が</text>
+  <text x="945" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#0E7C86" font-family="sans-serif">approve</text>
+
+  <!-- APV -> 反映は手動 -> SITE -->
+  <line x1="1035" y1="208" x2="1058" y2="208" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowP)"/>
+  <rect x="1060" y="175" width="128" height="66" rx="6" fill="#F1F6F7" stroke="#5B6B73" stroke-width="1.5"/>
+  <text x="1124" y="203" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F2742" font-family="sans-serif">転職サイト</text>
+  <text x="1124" y="222" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">（実サイト）</text>
+  <text x="1046" y="196" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">反映は手動</text>
+
+  <!-- APV -> 承認 -> PF (loop) -->
+  <path d="M945,266 C945,430 945,445 235,405" fill="none" stroke="#0E7C86" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowPT)"/>
+  <text x="600" y="452" text-anchor="middle" font-size="10" fill="#0E7C86" font-family="sans-serif">承認 → profile-sync資産へ書き戻し</text>
+</svg>

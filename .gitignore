@@ -1,0 +1,4 @@
+.DS_Store
+
+# Obsidian のワークスペース状態（マシン固有・内容ではない）
+.obsidian/

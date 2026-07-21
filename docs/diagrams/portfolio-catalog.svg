@@ -1,0 +1,40 @@
+<svg viewBox="0 0 1120 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlC descC">
+  <title id="ttlC">ポートフォリオ整備フロー（手動・対話起点）</title>
+  <desc id="descC">プロジェクト状況の正本 memory/shared/projects/*.md を、人が参照（自動点検は無し）してClaude Codeとの対話セッションへ持ち込み、そこから projects-catalog.yaml（公開ポートフォリオの正本）と各GitHubリポジトリのREADME・push・deployへ反映する。</desc>
+  <defs>
+    <marker id="arrowC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+  </defs>
+
+  <!-- MEM2 正本 -->
+  <ellipse cx="140" cy="190" rx="125" ry="65" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="140" y="178" text-anchor="middle" font-size="10.5" font-weight="600" fill="#0F2742" font-family="monospace">memory/shared/projects/*.md</text>
+  <text x="140" y="198" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">プロジェクト状況の正本</text>
+
+  <!-- MEM2 -.-> SESSION -->
+  <line x1="265" y1="190" x2="398" y2="190" stroke="#5B6B73" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowC)"/>
+  <text x="332" y="172" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">人が参照</text>
+  <text x="332" y="215" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">（自動点検は無し）</text>
+
+  <!-- SESSION -->
+  <rect x="400" y="145" width="215" height="90" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="507" y="178" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0F2742" font-family="sans-serif">Claude Codeとの</text>
+  <text x="507" y="197" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0F2742" font-family="sans-serif">対話セッション</text>
+  <text x="507" y="216" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">（区切りごと・cron無し）</text>
+
+  <!-- SESSION -> CATALOG -->
+  <path d="M615,170 C690,170 690,95 755,95" fill="none" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowC)"/>
+  <!-- SESSION -> REPOS -->
+  <path d="M615,210 C690,210 690,286 738,286" fill="none" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowC)"/>
+
+  <!-- CATALOG 正本 -->
+  <ellipse cx="885" cy="95" rx="125" ry="60" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="885" y="88" text-anchor="middle" font-size="11" font-weight="600" fill="#0F2742" font-family="monospace">projects-catalog.yaml</text>
+  <text x="885" y="107" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">公開ポートフォリオの正本</text>
+
+  <!-- REPOS -->
+  <rect x="740" y="250" width="290" height="72" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="885" y="280" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">各GitHubリポジトリ</text>
+  <text x="885" y="300" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">README・push・deploy</text>
+</svg>

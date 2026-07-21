@@ -1,0 +1,42 @@
+<svg viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlW descW">
+  <title id="ttlW">スケジュール更新フロー：作業の区切りで /update-work-lists が棚卸し</title>
+  <desc id="descW">左の「作業の区切り（対話起点）」から /update-work-lists（四角）へ矢印が伸び、そこから右へ3方向に分岐する。上はchecklist.mdの完了・決定項目チェック、中は当初リストに無い追加実施タスクの補足、下はbacklog.mdへの保留・次フェーズの起票。</desc>
+  <defs>
+    <marker id="arrowW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+  </defs>
+
+  <!-- BREAK -->
+  <rect x="40" y="130" width="180" height="72" rx="6" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="130" y="162" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0F2742" font-family="sans-serif">作業の区切り</text>
+  <text x="130" y="182" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">（対話起点）</text>
+
+  <!-- arrow BREAK -> UWL -->
+  <line x1="220" y1="166" x2="268" y2="166" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowW)"/>
+
+  <!-- UWL -->
+  <rect x="290" y="130" width="200" height="72" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="390" y="172" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="monospace">/update-work-lists</text>
+
+  <!-- fan-out arrows -->
+  <path d="M490,150 C560,150 560,66 618,66" fill="none" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowW)"/>
+  <line x1="490" y1="166" x2="618" y2="166" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowW)"/>
+  <path d="M490,182 C560,182 560,269 618,269" fill="none" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowW)"/>
+
+  <!-- CHK -->
+  <rect x="620" y="32" width="340" height="70" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="790" y="62" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="monospace">checklist.md</text>
+  <text x="790" y="82" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">完了・決定項目のみチェック</text>
+
+  <!-- ADD -->
+  <rect x="620" y="131" width="340" height="70" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="790" y="161" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">追加実施タスクを補足</text>
+  <text x="790" y="181" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">当初リストに無いもの</text>
+
+  <!-- BL -->
+  <rect x="620" y="230" width="340" height="80" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="790" y="258" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="monospace">backlog.md</text>
+  <text x="790" y="277" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">保留・次フェーズを起票</text>
+  <text x="790" y="293" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">（backlogスキル経由）</text>
+</svg>

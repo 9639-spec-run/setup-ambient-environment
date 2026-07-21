@@ -63,25 +63,13 @@
 
 ## 5. 定期情報収集
 
-```mermaid
-flowchart LR
-    INTERESTS[("正本\ninterests.md\n(関心データ)")] --> SR["/skill-review\n(週次点検)"]
-    SR -->|"点検→提案→承認"| FEEDS[("feeds.yaml\n(RSSフィードのdomain構成)")]
-    FEEDS --> IC["/info-collector\n(cron 毎週金17時)"]
-    IC --> DIGEST(("info-digest/\n<year>-W<week>.md"))
-```
+![Info Collection](diagrams/info-collection.svg)
 
 RSS収集（`info-collector`）は`feeds.yaml`のdomain構成に従ってfetch→選抜・要約→publishし、`info-digest/`（Obsidian・git管理）へ週次ダイジェストとして保存する。正本には直接書き込まない別経路だが、`feeds.yaml`自体は正本（`interests.md`の関心の優先度）から独立してはおらず、`skill-review`が正本の変化を週次点検し、前述「記憶正本の最適化／スキル正本の最適化」と同じ点検→提案→承認を経て反映される（＝スキル正本側の最適化対象）。ダイジェストをブログ化する場合はNotionへ人手で投稿する別フローに続くが、それは本節の収集フローの範囲外。収集そのものは無人実行(cron)を前提とし、正本への直接書き込みは行わない。
 
 ## 6. スケジュール更新（バックログ・チェックリストの定期更新）
 
-```mermaid
-flowchart LR
-    BREAK["作業の区切り\n(対話起点)"] --> UWL["/update-work-lists"]
-    UWL --> CHK["checklist.md\n完了・決定項目のみチェック"]
-    UWL --> ADD["当初リストに無い\n追加実施タスクを補足"]
-    UWL --> BL["backlog.md\n保留・次フェーズを起票\n(backlogスキル経由)"]
-```
+![Work Lists Update](diagrams/work-lists-update.svg)
 
 各プロジェクトのbacklog.md・checklist.mdを、作業の区切りごとに `/update-work-lists` が棚卸しする。完了・決定済みの項目をチェックし、当初リストになかった追加実施タスクを補足し、保留・次フェーズの項目をbacklogへ起票する。人間の承認を挟まず機械的に実行できる範囲（チェック・整形）と、承認が要る範囲（backlogへの新規起票）を分けている。
 
@@ -91,26 +79,12 @@ flowchart LR
 
 **プロフィール・スライド同期**（自動・隔週）
 
-```mermaid
-flowchart LR
-    TR["cron / Hermes\n(隔週)"] -.-> PS["/profile-sync-check"]
-    MEM[("~/projects/memory\n(監視元の正本)")] --> PS
-    PF[("profile-sync/master.yaml\nsites/*.yaml\nslide-*.md")] --> PS
-    PS --> PROP(("proposals/\n(承認待ち)"))
-    PROP --> APV{"人が approve"}
-    APV -->|承認| PF
-    APV -->|反映は手動| SITE["転職サイト\n(実サイト)"]
-```
+![Profile Sync](diagrams/profile-sync.svg)
 
 正本（`memory/shared`配下の実績・プロジェクト状況）の変化を`/profile-sync-check`が隔週で検知し、スライドやプロフィール文面（`profile-sync/master.yaml`・`sites/*.yaml`・自己紹介slide）への未反映分を提案として積む。承認・実サイトへの反映は人が行う。
 
 **ポートフォリオ（GitHubリポジトリ・カタログ）整備**（手動・対話起点）
 
-```mermaid
-flowchart LR
-    MEM2[("memory/shared/projects/*.md\n(プロジェクト状況の正本)")] -.->|"人が参照\n(自動点検は無し)"| SESSION["Claude Codeとの\n対話セッション\n(区切りごと・cron無し)"]
-    SESSION --> CATALOG[("projects-catalog.yaml\n公開ポートフォリオの正本")]
-    SESSION --> REPOS["各GitHubリポジトリ\nREADME・push・deploy"]
-```
+![Portfolio Catalog](diagrams/portfolio-catalog.svg)
 
 GitHubリポジトリの整備・README・公開デモは、`projects-catalog.yaml`を正本として対話セッション起点で棚卸しする運用。`projects-catalog.yaml`自体が「ステータスは`memory/shared/projects/*.md`の正本と一致させること」と定めているが、この一致は自動点検されておらず、対話セッション内で人間が都度参照して揃える運用。上の2機能とは異なり、点検→提案→承認を自動で回すスキルはまだ無く、都度Claude Codeとの対話の中で人間が判断・承認しながら進めている（本リポジトリ自体もこの運用で整備された）。

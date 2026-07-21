@@ -1,0 +1,50 @@
+<svg viewBox="0 0 1200 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlI descI">
+  <title id="ttlI">定期情報収集フロー：interests.md からダイジェスト生成まで</title>
+  <desc id="descI">左から、正本interests.md（丸）→ /skill-review（四角）が点検→提案→承認でfeeds.yaml（丸）を更新し、feeds.yaml → /info-collector（四角・cron毎週金17時）→ info-digest 週次ダイジェスト（丸）へ、左から右へ一方向の矢印でつながる。</desc>
+  <defs>
+    <marker id="arrowI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+  </defs>
+
+  <!-- interests.md (正本) -->
+  <ellipse cx="110" cy="105" rx="100" ry="56" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="110" y="90" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">正本</text>
+  <text x="110" y="110" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F2742" font-family="monospace">interests.md</text>
+  <text x="110" y="128" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">（関心データ）</text>
+
+  <!-- arrow -> skill-review -->
+  <line x1="210" y1="105" x2="256" y2="105" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowI)"/>
+
+  <!-- skill-review -->
+  <rect x="258" y="72" width="190" height="66" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="353" y="100" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0F2742" font-family="monospace">/skill-review</text>
+  <text x="353" y="120" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">（週次点検）</text>
+
+  <!-- arrow -> feeds.yaml -->
+  <line x1="448" y1="105" x2="498" y2="105" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowI)"/>
+  <text x="473" y="88" text-anchor="middle" font-size="9.5" fill="#0E7C86" font-family="sans-serif">点検→提案→承認</text>
+
+  <!-- feeds.yaml -->
+  <ellipse cx="600" cy="105" rx="100" ry="56" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="600" y="98" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F2742" font-family="monospace">feeds.yaml</text>
+  <text x="600" y="117" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">RSSフィードの</text>
+  <text x="600" y="131" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">domain構成</text>
+
+  <!-- arrow -> info-collector -->
+  <line x1="700" y1="105" x2="748" y2="105" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowI)"/>
+
+  <!-- info-collector -->
+  <rect x="750" y="72" width="200" height="66" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="850" y="100" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0F2742" font-family="monospace">/info-collector</text>
+  <text x="850" y="120" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">（cron 毎週金17時）</text>
+
+  <!-- arrow -> digest -->
+  <line x1="950" y1="105" x2="998" y2="105" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowI)"/>
+
+  <!-- info-digest (output) -->
+  <ellipse cx="1095" cy="105" rx="90" ry="56" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="1095" y="98" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F2742" font-family="monospace">info-digest/</text>
+  <text x="1095" y="117" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="monospace">&lt;year&gt;-W&lt;week&gt;.md</text>
+  <text x="1095" y="132" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">週次ダイジェスト</text>
+</svg>
