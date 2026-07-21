@@ -1,0 +1,63 @@
+<svg viewBox="0 0 780 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlB descB">
+  <title id="ttlB">最適化フロー図：点検→提案→承認に必要な資産つき</title>
+  <desc id="descB">左列に、上から丸で囲まれたSourceOfTruth、四角の点検→提案→承認、四角の変化のsourceが縦に並び、下から上へ矢印でつながる。右側には、点検→提案→承認に必要な資産を一覧にした縦長のボックスが、点検→提案→承認と変化のsourceの高さに合わせて配置されている。</desc>
+  <defs>
+    <style>
+      :root {
+        --text-primary: #2C2C2A;
+        --text-secondary: #5F5E5A;
+        --text-accent: #185FA5;
+        --text-muted: #8A8880;
+        --surface-0: #FFFFFF;
+        --surface-1: #F1EFE8;
+        --surface-2: #EAE8E0;
+        --border: #D8D5CC;
+        --border-strong: #B5B2A8;
+        --border-stronger: #8A8880;
+        --bg: #FBFAF7;
+        --bg2: #F1EFE8;
+      }
+    </style>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+  </defs>
+  <rect x="480" y="280" width="260" height="280" rx="6" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="610" y="334" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">点検→提案→承認の</text>
+  <text x="610" y="350" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">必要な資産</text>
+  <line x1="495" y1="366" x2="725" y2="366" stroke="#CFE0EE" stroke-width="1"/>
+  <text x="495" y="390" font-size="11" fill="#5B6B73" font-family="monospace">sources.yaml</text>
+  <text x="495" y="416" font-size="11" fill="#5B6B73" font-family="monospace">structure-docs.yaml</text>
+  <text x="495" y="442" font-size="11" fill="#5B6B73" font-family="monospace">eligible-sources.yaml</text>
+  <text x="495" y="468" font-size="11" fill="#5B6B73" font-family="monospace">approval_core.py</text>
+  <text x="495" y="494" font-size="11" fill="#5B6B73" font-family="monospace">review.py</text>
+  <ellipse cx="260" cy="140" rx="190" ry="95" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="260" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">SourceOfTruth</text>
+  <line x1="260" y1="95" x2="260" y2="205" stroke="#CFE0EE" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="180" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">memory</text>
+  <text x="180" y="140" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">facts・context</text>
+  <text x="180" y="156" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">projects・core.md</text>
+  <text x="340" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">skills</text>
+  <text x="340" y="140" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">core・dev・content</text>
+  <text x="340" y="156" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">researcher・recruiting</text>
+  <line x1="260" y1="280" x2="260" y2="238" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="276" y="258" font-size="12" fill="#0E7C86" font-family="sans-serif">承認・反映</text>
+  <rect x="70" y="280" width="380" height="120" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="260" y="305" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">点検 → 提案 → 承認</text>
+  <text x="260" y="330" text-anchor="middle" font-size="11" fill="#5B6B73" font-family="sans-serif">memory-review / doc-drift-check</text>
+  <text x="260" y="352" text-anchor="middle" font-size="11" fill="#5B6B73" font-family="sans-serif">proposals/ → review.py（人が承認）</text>
+  <text x="260" y="374" text-anchor="middle" font-size="11" fill="#5B6B73" font-family="sans-serif">git commit = 監査ログ</text>
+  <line x1="260" y1="440" x2="260" y2="403" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowB)"/>
+  <text x="276" y="420" font-size="12" fill="#0E7C86" font-family="sans-serif">検知・登録</text>
+  <rect x="70" y="440" width="380" height="120" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="260" y="465" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">変化のsource</text>
+  <rect x="90" y="480" width="102" height="55" rx="4" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="141" y="503" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">Auto</text>
+  <text x="141" y="518" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">Memory</text>
+  <rect x="208" y="480" width="102" height="55" rx="4" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="259" y="503" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">human</text>
+  <text x="259" y="518" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">input</text>
+  <rect x="326" y="480" width="102" height="55" rx="4" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="377" y="503" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">commit</text>
+  <text x="377" y="518" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">diff</text>
+</svg>

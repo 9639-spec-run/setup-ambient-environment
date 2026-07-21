@@ -1,0 +1,71 @@
+<svg viewBox="0 0 950 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlD descD">
+  <title id="ttlD">メタデータの最適化（構造ドリフト検知） 詳細図</title>
+  <desc id="descD">直前コミット（丸）がdoc-drift-check（四角）を起動し、structure-docs.yaml（丸・横に参照）と突き合わせてLLM判定（四角）を行う。ズレなしは更新不要で終了、ズレありはproposals（丸）へ。eligible-sources.yaml（丸・横に参照）で許可を確認し、review.py（四角）で人が承認するとself-describing docs（丸）に反映される。承認は次のコミットとして左側のループで再びdoc-drift-checkを誘発する。</desc>
+  <defs>
+    <style>
+      :root {
+        --text-primary: #2C2C2A;
+        --text-secondary: #5F5E5A;
+        --text-accent: #185FA5;
+        --text-muted: #8A8880;
+        --surface-0: #FFFFFF;
+        --surface-1: #F1EFE8;
+        --surface-2: #EAE8E0;
+        --border: #D8D5CC;
+        --border-strong: #B5B2A8;
+        --border-stronger: #8A8880;
+        --bg: #FBFAF7;
+        --bg2: #F1EFE8;
+      }
+    </style>
+    <marker id="arrowD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+  </defs>
+  <ellipse cx="450" cy="65" rx="140" ry="45" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="450" y="61" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">直前コミット</text>
+  <text x="450" y="77" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="monospace">(git diff)</text>
+  <line x1="450" y1="110" x2="450" y2="140" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowD)"/>
+  <text x="466" y="130" font-size="10" fill="#0E7C86" font-family="sans-serif">post-commit hook起動</text>
+  <rect x="330" y="142" width="240" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="166" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">doc-drift-check skill</text>
+  <text x="450" y="183" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">post-commit hookから起動</text>
+  <line x1="570" y1="169" x2="683" y2="169" stroke="#5B6B73" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrowD)"/>
+  <text x="627" y="162" text-anchor="middle" font-size="9.5" fill="#0E7C86" font-family="sans-serif">参照</text>
+  <ellipse cx="795" cy="169" rx="110" ry="46" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="795" y="165" text-anchor="middle" font-size="11" font-weight="600" fill="#0F2742" font-family="monospace">structure-docs.yaml</text>
+  <text x="795" y="181" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">path + hint 一覧</text>
+  <line x1="450" y1="197" x2="450" y2="223" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowD)"/>
+  <rect x="350" y="225" width="200" height="52" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="248" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">LLM判定</text>
+  <text x="450" y="264" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">diffとhintを突き合わせ</text>
+  <line x1="375" y1="277" x2="230" y2="325" stroke="#5B6B73" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowD)"/>
+  <text x="270" y="300" font-size="9.5" fill="#5B6B73" font-family="sans-serif">ズレなし</text>
+  <ellipse cx="190" cy="345" rx="95" ry="40" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="190" y="341" text-anchor="middle" font-size="10.5" fill="#5B6B73" font-family="sans-serif">更新不要</text>
+  <text x="190" y="356" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">（ズレなし・終了）</text>
+  <line x1="450" y1="277" x2="450" y2="305" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowD)"/>
+  <text x="466" y="295" font-size="10" fill="#0E7C86" font-family="sans-serif">ズレあり</text>
+  <ellipse cx="450" cy="345" rx="115" ry="45" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="450" y="341" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="monospace">proposals/</text>
+  <text x="450" y="357" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">approval_core.py</text>
+  <line x1="565" y1="345" x2="683" y2="345" stroke="#5B6B73" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrowD)"/>
+  <text x="627" y="338" text-anchor="middle" font-size="9.5" fill="#0E7C86" font-family="sans-serif">許可確認</text>
+  <ellipse cx="795" cy="345" rx="110" ry="46" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="795" y="341" text-anchor="middle" font-size="11" font-weight="600" fill="#0F2742" font-family="monospace">eligible-sources.yaml</text>
+  <text x="795" y="357" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">source別allow-list</text>
+  <line x1="450" y1="390" x2="450" y2="418" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowD)"/>
+  <rect x="330" y="420" width="240" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="444" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">review.py</text>
+  <text x="450" y="461" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">人が承認（approve / reject）</text>
+  <path d="M330,447 C270,447 270,345 335,345" fill="none" stroke="#CFE0EE" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowD)"/>
+  <text x="245" y="400" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">却下</text>
+  <line x1="450" y1="475" x2="450" y2="503" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowD)"/>
+  <text x="466" y="495" font-size="10" fill="#0E7C86" font-family="sans-serif">承認</text>
+  <ellipse cx="450" cy="550" rx="175" ry="50" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="546" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0F2742" font-family="sans-serif">self-describing docs</text>
+  <text x="450" y="563" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="monospace">README・tools/claude-code.md等</text>
+  <path d="M280,550 C90,550 90,65 305,65" fill="none" stroke="#5B6B73" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowD)"/>
+  <text x="95" y="310" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">次のコミットで</text>
+  <text x="95" y="324" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">再検知（未解決）</text>
+</svg>

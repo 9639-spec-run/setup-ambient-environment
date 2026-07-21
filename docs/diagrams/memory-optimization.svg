@@ -1,0 +1,70 @@
+<svg viewBox="0 0 920 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlO2 descO2">
+  <title id="ttlO2">memoryの最適化 詳細図（データ＝丸・処理＝四角）</title>
+  <desc id="descO2">auto-memoryとinbox（丸）から、memory-review skill（四角）が起動する。memory-reviewは横に置かれたsources.yaml（丸）を参照する。proposals（丸）を経てreview.py（四角）で人が承認するとmemory/shared（丸）に反映され、post-commit hook（四角）が各投影を再生成する。却下・保留は破線でproposalsへ戻る。</desc>
+  <defs>
+    <style>
+      :root {
+        --text-primary: #2C2C2A;
+        --text-secondary: #5F5E5A;
+        --text-accent: #185FA5;
+        --text-muted: #8A8880;
+        --surface-0: #FFFFFF;
+        --surface-1: #F1EFE8;
+        --surface-2: #EAE8E0;
+        --border: #D8D5CC;
+        --border-strong: #B5B2A8;
+        --border-stronger: #8A8880;
+        --bg: #FBFAF7;
+        --bg2: #F1EFE8;
+      }
+    </style>
+    <marker id="arrowO2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+    <marker id="arrowRefO2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+  </defs>
+  <ellipse cx="280" cy="65" rx="150" ry="55" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="280" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">auto-memory/</text>
+  <text x="280" y="72" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="monospace">~/.claude/projects/*/memory/</text>
+  <text x="280" y="86" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="monospace">skills-workspace/summaries/</text>
+  <ellipse cx="620" cy="65" rx="150" ry="55" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="620" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">inbox/</text>
+  <text x="620" y="72" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="monospace">sources/inbox/monthly-review/</text>
+  <text x="620" y="86" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="monospace">sources/inbox/tasks/inbox.md</text>
+  <line x1="310" y1="115" x2="420" y2="145" stroke="#CFE0EE" stroke-width="1.5" marker-end="url(#arrowO2)"/>
+  <line x1="590" y1="115" x2="480" y2="145" stroke="#CFE0EE" stroke-width="1.5" marker-end="url(#arrowO2)"/>
+  <rect x="340" y="147" width="220" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="171" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">memory-review skill</text>
+  <text x="450" y="188" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="monospace">--script --no-agent</text>
+  <line x1="560" y1="174" x2="678" y2="174" stroke="#5B6B73" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrowRefO2)"/>
+  <text x="618" y="167" text-anchor="middle" font-size="9.5" fill="#0E7C86" font-family="sans-serif">参照</text>
+  <ellipse cx="790" cy="174" rx="105" ry="48" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="790" y="170" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F2742" font-family="monospace">sources.yaml</text>
+  <text x="790" y="186" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">登録簿（active/inactive）</text>
+  <line x1="450" y1="202" x2="450" y2="223" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowO2)"/>
+  <ellipse cx="450" cy="270" rx="115" ry="47" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="450" y="266" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="monospace">proposals/</text>
+  <text x="450" y="283" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">approval_core.py</text>
+  <line x1="450" y1="317" x2="450" y2="345" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowO2)"/>
+  <rect x="340" y="347" width="220" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="371" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">review.py</text>
+  <text x="450" y="388" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">人が承認（approve / reject）</text>
+  <path d="M330,375 C270,375 270,270 335,270" fill="none" stroke="#CFE0EE" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowO2)"/>
+  <text x="215" y="330" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="sans-serif">却下・保留</text>
+  <line x1="450" y1="402" x2="450" y2="425" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowO2)"/>
+  <text x="466" y="417" font-size="10.5" fill="#0E7C86" font-family="sans-serif">承認</text>
+  <ellipse cx="450" cy="480" rx="180" ry="58" fill="#FFFFFF" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="470" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">memory/shared/</text>
+  <text x="450" y="488" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="monospace">context・projects・facts・core.md</text>
+  <text x="450" y="503" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">git commit = 監査ログ</text>
+  <line x1="600" y1="480" x2="678" y2="480" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowO2)"/>
+  <rect x="680" y="453" width="200" height="54" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="780" y="474" text-anchor="middle" font-size="11" font-weight="600" fill="#0F2742" font-family="sans-serif">post-commit hook</text>
+  <text x="780" y="490" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">各投影を再生成</text>
+  <line x1="780" y1="507" x2="780" y2="535" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowO2)"/>
+  <ellipse cx="780" cy="585" rx="105" ry="42" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="780" y="582" text-anchor="middle" font-size="10.5" font-weight="600" fill="#0F2742" font-family="monospace">USER.md 等</text>
+  <text x="780" y="597" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="sans-serif">再生成された投影</text>
+</svg>

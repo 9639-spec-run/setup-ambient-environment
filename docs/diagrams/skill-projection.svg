@@ -1,0 +1,62 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlS2 descS2">
+  <title id="ttlS2">skillの投影 詳細図（データ＝丸・処理＝四角）</title>
+  <desc id="descS2">skills正本のmarketplace.json・requirements.yaml・assignments.yaml（丸）がdeliver.py（四角）に読み込まれる。deliver.pyはapplyでsettings.json・mcp.json（丸）を経てClaude Code（四角）へ、showでconfig.yaml external_dirs（丸）を経てHermes（四角）へ、showで設定UIからの手動install（四角）を経てCowork（四角）へ届く。</desc>
+  <defs>
+    <style>
+      :root {
+        --text-primary: #2C2C2A;
+        --text-secondary: #5F5E5A;
+        --text-accent: #185FA5;
+        --text-muted: #8A8880;
+        --surface-0: #FFFFFF;
+        --surface-1: #F1EFE8;
+        --surface-2: #EAE8E0;
+        --border: #D8D5CC;
+        --border-strong: #B5B2A8;
+        --border-stronger: #8A8880;
+        --bg: #FBFAF7;
+        --bg2: #F1EFE8;
+      }
+    </style>
+    <marker id="arrowS2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+  </defs>
+  <rect x="250" y="20" width="400" height="100" rx="6" fill="none" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="38" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">skills/ 正本</text>
+  <ellipse cx="322" cy="80" rx="72" ry="36" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="322" y="84" text-anchor="middle" font-size="9.5" fill="#0F2742" font-family="monospace">marketplace.json</text>
+  <ellipse cx="450" cy="80" rx="78" ry="36" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="450" y="84" text-anchor="middle" font-size="9.5" fill="#0F2742" font-family="monospace">requirements.yaml</text>
+  <ellipse cx="578" cy="80" rx="78" ry="36" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="578" y="84" text-anchor="middle" font-size="9.5" fill="#0F2742" font-family="monospace">assignments.yaml</text>
+  <line x1="450" y1="120" x2="450" y2="166" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowS2)"/>
+  <text x="466" y="148" font-size="12" fill="#0E7C86" font-family="sans-serif">判断→配布</text>
+  <rect x="390" y="168" width="120" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="192" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">deliver.py</text>
+  <text x="450" y="209" text-anchor="middle" font-size="10" fill="#5B6B73" font-family="sans-serif">show / apply</text>
+  <line x1="450" y1="223" x2="150" y2="256" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowS2)"/>
+  <text x="245" y="238" font-size="11" fill="#0E7C86" font-family="sans-serif">apply</text>
+  <line x1="450" y1="223" x2="450" y2="256" stroke="#5B6B73" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowS2)"/>
+  <text x="460" y="240" font-size="11" fill="#0E7C86" font-family="sans-serif">show</text>
+  <line x1="450" y1="223" x2="750" y2="256" stroke="#5B6B73" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowS2)"/>
+  <text x="628" y="238" font-size="11" fill="#0E7C86" font-family="sans-serif">show</text>
+  <ellipse cx="150" cy="290" rx="90" ry="34" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="150" y="286" text-anchor="middle" font-size="9.5" fill="#0F2742" font-family="monospace">settings.json</text>
+  <text x="150" y="299" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="monospace">enabledPlugins・mcp.json</text>
+  <ellipse cx="450" cy="290" rx="90" ry="34" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="450" y="286" text-anchor="middle" font-size="9.5" fill="#0F2742" font-family="monospace">config.yaml</text>
+  <text x="450" y="299" text-anchor="middle" font-size="9" fill="#5B6B73" font-family="monospace">skills.external_dirs</text>
+  <rect x="670" y="264" width="160" height="52" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="1.5"/>
+  <text x="750" y="285" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">設定UI</text>
+  <text x="750" y="301" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">手動install</text>
+  <line x1="150" y1="324" x2="150" y2="376" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowS2)"/>
+  <line x1="450" y1="324" x2="450" y2="376" stroke="#5B6B73" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowS2)"/>
+  <line x1="750" y1="316" x2="750" y2="376" stroke="#5B6B73" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowS2)"/>
+  <rect x="60" y="378" width="180" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="150" y="411" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">Claude Code</text>
+  <rect x="360" y="378" width="180" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="411" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">Hermes</text>
+  <rect x="660" y="378" width="180" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="750" y="411" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">Cowork</text>
+</svg>

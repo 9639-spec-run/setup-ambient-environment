@@ -1,0 +1,66 @@
+<svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttlM2 descM2">
+  <title id="ttlM2">memoryの投影 詳細図（データ＝丸・処理＝四角）</title>
+  <desc id="descM2">memory/shared正本のfacts・context・projects（丸）がcore.md（丸）に集約される。core.mdから4方向に分岐し、Claude Codeには@import（四角）、claude.aiには手動貼付（四角）、Hermesにはpost-commit hook経由gen_hermes_user.py（四角）でUSER.md生成、Coworkには未整備の手動投影（四角・破線）で届く。</desc>
+  <defs>
+    <style>
+      :root {
+        --text-primary: #2C2C2A;
+        --text-secondary: #5F5E5A;
+        --text-accent: #185FA5;
+        --text-muted: #8A8880;
+        --surface-0: #FFFFFF;
+        --surface-1: #F1EFE8;
+        --surface-2: #EAE8E0;
+        --border: #D8D5CC;
+        --border-strong: #B5B2A8;
+        --border-stronger: #8A8880;
+        --bg: #FBFAF7;
+        --bg2: #F1EFE8;
+      }
+    </style>
+    <marker id="arrowM2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6B73"/>
+    </marker>
+  </defs>
+  <rect x="210" y="20" width="480" height="175" rx="6" fill="none" stroke="#3E5C76" stroke-width="2"/>
+  <text x="450" y="38" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">memory/shared 正本</text>
+  <ellipse cx="299" cy="73" rx="69" ry="32" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="299" y="77" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="monospace">facts/</text>
+  <ellipse cx="449" cy="73" rx="69" ry="32" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="449" y="77" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="monospace">context/</text>
+  <ellipse cx="599" cy="73" rx="69" ry="32" fill="#FFFFFF" stroke="#CFE0EE" stroke-width="1.5"/>
+  <text x="599" y="77" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="monospace">projects/</text>
+  <line x1="299" y1="105" x2="410" y2="122" stroke="#CFE0EE" stroke-width="1.5"/>
+  <line x1="449" y1="105" x2="450" y2="118" stroke="#CFE0EE" stroke-width="1.5"/>
+  <line x1="599" y1="105" x2="490" y2="122" stroke="#CFE0EE" stroke-width="1.5"/>
+  <ellipse cx="450" cy="145" rx="82" ry="32" fill="#FFFFFF" stroke="#3E5C76" stroke-width="1.5"/>
+  <text x="450" y="149" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0F2742" font-family="monospace">core.md</text>
+  <line x1="450" y1="177" x2="150" y2="215" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowM2)"/>
+  <line x1="450" y1="177" x2="350" y2="215" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowM2)"/>
+  <line x1="450" y1="177" x2="550" y2="215" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowM2)"/>
+  <line x1="450" y1="177" x2="750" y2="215" stroke="#5B6B73" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowM2)"/>
+  <rect x="70" y="217" width="160" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="1.5"/>
+  <text x="150" y="249" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">@import</text>
+  <rect x="270" y="217" width="160" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="1.5"/>
+  <text x="350" y="249" text-anchor="middle" font-size="12" font-weight="600" fill="#0F2742" font-family="sans-serif">手動貼付</text>
+  <rect x="470" y="217" width="160" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="1.5"/>
+  <text x="550" y="239" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">post-commit hook</text>
+  <text x="550" y="255" text-anchor="middle" font-size="10.5" fill="#0F2742" font-family="sans-serif">gen_hermes_user.py</text>
+  <rect x="670" y="217" width="160" height="55" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="750" y="249" text-anchor="middle" font-size="11.5" font-weight="600" fill="#5B6B73" font-family="sans-serif">手動投影（未整備）</text>
+  <line x1="150" y1="272" x2="150" y2="345" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowM2)"/>
+  <line x1="350" y1="272" x2="350" y2="345" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowM2)"/>
+  <line x1="550" y1="272" x2="550" y2="345" stroke="#5B6B73" stroke-width="2" marker-end="url(#arrowM2)"/>
+  <line x1="750" y1="272" x2="750" y2="345" stroke="#5B6B73" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrowM2)"/>
+  <rect x="70" y="347" width="160" height="60" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="150" y="372" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">Claude Code</text>
+  <text x="150" y="389" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="monospace">CLAUDE.md</text>
+  <rect x="270" y="347" width="160" height="60" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="350" y="372" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">claude.ai</text>
+  <text x="350" y="389" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="monospace">instructions</text>
+  <rect x="470" y="347" width="160" height="60" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2"/>
+  <text x="550" y="372" text-anchor="middle" font-size="13" font-weight="600" fill="#0F2742" font-family="sans-serif">Hermes</text>
+  <text x="550" y="389" text-anchor="middle" font-size="9.5" fill="#5B6B73" font-family="monospace">USER.md</text>
+  <rect x="670" y="347" width="160" height="60" rx="6" fill="#F1F6F7" stroke="#3E5C76" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="750" y="382" text-anchor="middle" font-size="13" font-weight="600" fill="#5B6B73" font-family="sans-serif">Cowork</text>
+</svg>
