@@ -1,6 +1,6 @@
 # Architecture
 
-複数のAIアシスタントが同じ正本を参照し、正本の更新は必ず人間の承認を通す。この設計を支える8つの機能を章立てで説明する。
+複数のAIアシスタントが同じ正本を参照し、正本の更新は必ず人間の承認を通す。この設計を支える7つの機能を章立てで説明する。
 
 ## 全体像
 
@@ -22,7 +22,19 @@
 
 ## 1. 定期情報収集
 
-外部ソース（RSS・Web・過去セッションの要約等）を定期的に取り込み、`sources/inbox/` 配下に集約する。集約された素材は後述の「記憶正本の最適化」フローに載り、点検→提案→承認を経て正本に反映される。収集そのものは無人実行(cron)を前提とし、正本への書き込みは行わない。
+外部ソースの取り込みは2経路に分かれる。
+
+```mermaid
+flowchart LR
+    RSS[("RSS Feeds")] --> IC["/info-collector\n(cron 毎朝6時)"]
+    IC --> NDB(("Notion DB\n(コンテンツ執筆パイプライン向け)"))
+
+    HUMAN["人間が随時\n書き込み"] --> INBOX(("sources/inbox/\nmonthly-review・reference\ntasks・through-ai"))
+    INBOX --> MR["/memory-review\n(週次)"]
+    MR --> CANON[("正本へ反映\n(承認後)")]
+```
+
+①ブログ用のRSS収集（`info-collector`）はNotion DBへ集約し、正本には書き込まない別経路（コンテンツ自動化パイプライン向け）。②正本更新の起点になるのは、人間が随時 `sources/inbox/` 配下（`monthly-review`・`reference`・`tasks`・`through-ai`）へ書き込むメモで、これが後述「記憶正本の最適化」フローに載り、点検→提案→承認を経て正本に反映される。収集そのものは無人実行(cron)を前提とし、①②いずれも正本への直接書き込みは行わない。
 
 ## 2. 記憶正本の投影 ／ スキル正本の投影
 
@@ -67,12 +79,41 @@
 
 ## 6. スケジュール更新（バックログ・チェックリストの定期更新）
 
-各プロジェクトのbacklog.md・checklist.mdを、作業の区切りごとに棚卸しする。完了・決定済みの項目をチェックし、当初リストになかった追加実施タスクを補足し、保留・次フェーズの項目をbacklogへ起票する。この一連の作業リスト保守もスキル化されており、人間の承認を挟まず機械的に実行できる範囲（チェック・整形）と、承認が要る範囲（backlogへの新規起票）を分けている。
+```mermaid
+flowchart LR
+    BREAK["作業の区切り\n(対話起点)"] --> UWL["/update-work-lists"]
+    UWL --> CHK["checklist.md\n完了・決定項目のみチェック"]
+    UWL --> ADD["当初リストに無い\n追加実施タスクを補足"]
+    UWL --> BL["backlog.md\n保留・次フェーズを起票\n(backlogスキル経由)"]
+```
 
-## 7. ビジネスデータ定期更新（スライド・プロフィール）
+各プロジェクトのbacklog.md・checklist.mdを、作業の区切りごとに `/update-work-lists` が棚卸しする。完了・決定済みの項目をチェックし、当初リストになかった追加実施タスクを補足し、保留・次フェーズの項目をbacklogへ起票する。人間の承認を挟まず機械的に実行できる範囲（チェック・整形）と、承認が要る範囲（backlogへの新規起票）を分けている。
 
-キャリア関連のスライド・プロフィールMarkdownも、正本（memory/shared配下の実績・プロジェクト状況）からの投影対象として扱う。正本側の変化（プロジェクトのstatus更新等）を検知し、スライドやプロフィール文面に反映すべき差分を提案する。
+## 7. ビジネスデータ定期更新（スライド・プロフィール・ポートフォリオ）
 
-## 8. ビジネスデータ定期更新（ポートフォリオ最適化）
+キャリア関連のスライド・プロフィール・GitHubポートフォリオも正本からの投影対象として扱うが、自動化の成熟度は一様ではない。
 
-GitHubリポジトリの整備・README・公開デモも同じ「点検→提案→承認」ループの対象としている。本リポジトリ自体、そのループの一部として整備されている。
+**プロフィール・スライド同期**（自動・隔週）
+
+```mermaid
+flowchart LR
+    TR["cron / Hermes\n(隔週)"] -.-> PS["/profile-sync-check"]
+    MEM[("~/projects/memory\n(監視元の正本)")] --> PS
+    PF[("profile-sync/master.yaml\nsites/*.yaml\nslide-*.md")] --> PS
+    PS --> PROP(("proposals/\n(承認待ち)"))
+    PROP --> APV{"人が approve"}
+    APV -->|承認| PF
+    APV -->|反映は手動| SITE["転職サイト\n(実サイト)"]
+```
+
+正本（`memory/shared`配下の実績・プロジェクト状況）の変化を`/profile-sync-check`が隔週で検知し、スライドやプロフィール文面（`profile-sync/master.yaml`・`sites/*.yaml`・自己紹介slide）への未反映分を提案として積む。承認・実サイトへの反映は人が行う。
+
+**ポートフォリオ（GitHubリポジトリ・カタログ）整備**（手動・対話起点）
+
+```mermaid
+flowchart LR
+    SESSION["Claude Codeとの\n対話セッション\n(区切りごと・cron無し)"] --> CATALOG[("projects-catalog.yaml\n公開ポートフォリオの正本")]
+    SESSION --> REPOS["各GitHubリポジトリ\nREADME・push・deploy"]
+```
+
+GitHubリポジトリの整備・README・公開デモは、`projects-catalog.yaml`を正本として対話セッション起点で棚卸しする運用。上の2機能とは異なり、点検→提案→承認を自動で回すスキルはまだ無く、都度Claude Codeとの対話の中で人間が判断・承認しながら進めている（本リポジトリ自体もこの運用で整備された）。
