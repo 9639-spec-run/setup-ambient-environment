@@ -5,8 +5,8 @@
 アプリ開発ではなく、AIエージェント群を安全に運用するための**環境構築・整備**のプロジェクト。実装は各アシスタントの設定・スクリプト・cronに分散しているため単体では動かせないが、設計そのものが成果物。個人データは一切含まず、図とアーキテクチャ説明のみで構成している。
 
 > **正本リポジトリ（README）**
-> 📘 [memory — 長期記憶の正本](https://claude.ai/code/artifact/ddd0881e-5b70-4c02-bf7c-c95bb305d1fd)
-> 🛠️ [skills — 能力の正本](https://claude.ai/code/artifact/f902b9f1-767c-4e8f-b677-1186163e2441)
+> 📘 [memory — 長期記憶の正本](https://gist.github.com/9639-spec-run/3708e7f564bf0ec1a17a0104b6ba0e24)
+> 🛠️ [skills — 能力の正本](https://gist.github.com/9639-spec-run/e87aa2216c00e2c262f6988fa1cf5f26)
 >
 > 上記2リポジトリ本体は個人データを含むため非公開。README のみ抜粋公開。
 
